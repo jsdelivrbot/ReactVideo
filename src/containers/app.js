@@ -14,6 +14,9 @@ class App extends Component{
         this.state ={movieList:{},currentMovie:{}};
     }
     componentWillMount(){
+     this.initMovies();
+    }
+    initMovies(){
         axios.get(`${API_END_POINT}${POPULAR_MOVIES_URL}&${API_KEY}`).then(function(response){
             this.setState({movieList:response.data.results.slice(0,6),currentMovie:response.data.results[0]});
             console.log("",this.state.movieList);
