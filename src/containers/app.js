@@ -23,10 +23,15 @@ class App extends Component{
         }.bind(this));
     }
     render(){
+        const renderVideoList = () =>{
+            if(this.state.movieList.length>=5){
+                return  <VideoList movieList={this.state.movieList}/>
+            }
+        }
         return (
             <div>
                 <SearchBar/>
-                <VideoList/>
+               {renderVideoList()}
                 <VideoDetail title={this.state.currentMovie.title} description={this.state.currentMovie.overview}/>
             </div>
             )
